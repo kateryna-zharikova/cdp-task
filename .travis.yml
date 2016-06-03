@@ -1,4 +1,17 @@
 language: node_js
 node_js:
-  - "5"
-script: gulp lint
+- '5'
+branches:
+  only:
+  - deploy
+script: npm run build
+deploy:
+  provider: heroku
+  app: cdp-task
+  skip_cleanup: true
+  api_key:
+    secure: sM3MP1jt2s/ZvBM51POZ7a4MznkZetguwXN2pPD45r6HeEKcyPhv0Yx4uddiyxjcbQOxQVu7ByviIXvCdPbu8Pfo/j0YoyQS9Yn/XX+FYFqSaJ0/vuHRHaHvekQTckyOr7RuAGuoYqT79b38wMt0j7Cf/8MyCdSUhrSDtwd6yAqDmhFRjD/bwl194i4LZ4u7qzqvNXBjX7f+ErB72+MuAaBe8/0pK7CuJQ6tENBR0FdeDOFxNSOpcMj2/c3Oo7uQb4HoWrhb58AXiD/tcu2bvBgEv8N81/71nYxffuCu1ZG9nzoRBVLYcwK6LlvxECHy49DXZGPcFjyr/zvKVN6iWnRcq3mc2dRRZDKWsF1X7eQmYh2jXftylh9sQmLvlPZrWImCU/qiSBSlQ71DzB4lAUtRYuUOjyV77nRV6ElnyG7UFxEIrgtyQ2NJhZhxG+XeD7Q7Z7PdBgIbQ1I6KxKMvtemJstY87sqDPM22N6ONorRoQn7dxevKm+GGGj1MV9Wht9lkPBI81N+IpCM9+jGi7jneKSISgspt8q4vOicvWvTicsaitOWsYUW/RCmI7y1Gx4AMXCgWJjKU0WBoFCRBc1lRQxjpdtUge7u7kAdpJV+c4C5R/jMR1Ig6zVHrcOnzYrO85Bi6WIgkyMklKIonyNgYeJvAJDrrlbIDpJbeYM=
+  run:
+  - npm i -g http-server
+  on:
+    branch: deploy
